@@ -15,7 +15,7 @@ export default function Navbar() {
     <nav className="bg-yellow-100 shadow-md px-6 py-4 flex justify-between items-center relative">
       {/* Logo */}
       <Link to="/" className="text-2xl font-bold text-gray-800">
-        🚗 CarRent
+        CarRent
       </Link>
 
       {/* Hamburger Icon */}
