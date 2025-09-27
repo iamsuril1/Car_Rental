@@ -1,6 +1,4 @@
 import Car from "../models/Car.js";
-
-// Add new car (owner only)
 export const addCar = async (req, res) => {
   try {
     const { title, brand, model, pricePerDay, location, image } = req.body;
@@ -21,7 +19,6 @@ export const addCar = async (req, res) => {
   }
 };
 
-// Get all cars
 export const getCars = async (req, res) => {
   try {
     const cars = await Car.find({ available: true }).populate("ownerId", "name email");
@@ -31,7 +28,6 @@ export const getCars = async (req, res) => {
   }
 };
 
-// Get single car by ID
 export const getCarById = async (req, res) => {
   try {
     const car = await Car.findById(req.params.id).populate("ownerId", "name email");
@@ -42,7 +38,6 @@ export const getCarById = async (req, res) => {
   }
 };
 
-// Owner’s cars
 export const getMyCars = async (req, res) => {
   try {
     const cars = await Car.find({ ownerId: req.user._id });
@@ -52,7 +47,6 @@ export const getMyCars = async (req, res) => {
   }
 };
 
-// Update car
 export const updateCar = async (req, res) => {
   try {
     const car = await Car.findById(req.params.id);
@@ -69,7 +63,7 @@ export const updateCar = async (req, res) => {
   }
 };
 
-// Delete car
+
 export const deleteCar = async (req, res) => {
   try {
     const car = await Car.findById(req.params.id);

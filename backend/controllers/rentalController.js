@@ -1,7 +1,6 @@
 import Rental from "../models/Rental.js";
 import Car from "../models/Car.js";
 
-// Tenant requests rental
 export const requestRental = async (req, res) => {
   try {
     const { carId, rentalDays, paymentMethod } = req.body;
@@ -26,7 +25,6 @@ export const requestRental = async (req, res) => {
   }
 };
 
-// Owner accepts rental
 export const acceptRental = async (req, res) => {
   try {
     const rental = await Rental.findById(req.params.id);
@@ -45,7 +43,6 @@ export const acceptRental = async (req, res) => {
   }
 };
 
-// Owner rejects rental
 export const rejectRental = async (req, res) => {
   try {
     const rental = await Rental.findById(req.params.id);
@@ -64,7 +61,6 @@ export const rejectRental = async (req, res) => {
   }
 };
 
-// Tenant pays rental
 export const payRental = async (req, res) => {
   try {
     const rental = await Rental.findById(req.params.id);
@@ -83,7 +79,6 @@ export const payRental = async (req, res) => {
   }
 };
 
-// Tenant’s rentals
 export const getMyRentals = async (req, res) => {
   try {
     const rentals = await Rental.find({ tenantId: req.user._id }).populate("carId");
@@ -93,7 +88,6 @@ export const getMyRentals = async (req, res) => {
   }
 };
 
-// Owner’s rentals (requests they receive)
 export const getOwnerRentals = async (req, res) => {
   try {
     const rentals = await Rental.find({ ownerId: req.user._id }).populate("carId tenantId");
